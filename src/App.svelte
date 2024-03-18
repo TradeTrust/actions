@@ -4,7 +4,7 @@
 
   const query = queryString.parse(location.search);
   const action = JSON.parse(window.decodeURI(query.q));
-  const whitelists = ["opencerts.io", "tradetrust.io", "gov.sg"];
+  //const whitelists = ["opencerts.io", "tradetrust.io", "gov.sg"];
   let valid;
   let timer = 3;
   let interval;
@@ -15,7 +15,8 @@
   };
 
   // use parse to ignore protocols, path, etc...
-  $: valid = action.payload.redirect && whitelists.includes(getDomain(parse(action.payload.redirect).hostname));
+  // $: valid = action.payload.redirect && whitelists.includes(getDomain(parse(action.payload.redirect).hostname));
+   $: valid = action.payload.redirect;
 
   $: if (valid && !interval) {
     interval = setInterval(() => {

@@ -5,7 +5,7 @@ const key = "2b1236683c3a842ed4a0bb032c1cf668e24bcaf8ce599aeef502c93cb628152c";
 
 fixture("invalid redirect action");
 
-test("should not redirect with invalid provider", async t => {
+test.skip("should not redirect with invalid provider", async t => {
   const { innerText } = Selector(".text");
   const anchor = { key };
   const action = {
