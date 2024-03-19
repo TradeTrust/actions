@@ -1,7 +1,7 @@
 import { ClientFunction, Selector } from "testcafe";
 
 const timer = 3;
-const preText = "Redirecting to https://www.verify.gov.sg/verify in ";
+const preText = "Redirecting to https://www.tradetrust.io/verify in ";
 const key = "2b1236683c3a842ed4a0bb032c1cf668e24bcaf8ce599aeef502c93cb628152c";
 
 fixture("valid redirect action");
@@ -14,12 +14,13 @@ test("should redirect when key is part of anchor", async t => {
     payload: {
       uri: "https://api-vaccine.storage.staging.notarise.io/document/6cfbbcbf-85a1-4644-b61a-952c12376502",
       permittedActions: ["VIEW", "STORE"],
-      redirect: "https://www.verify.gov.sg/verify"
+      redirect: "https://www.tradetrust.io/verify"
     }
   };
-  const encodedUri = `${encodeURI(JSON.stringify(action))}#${encodeURI(JSON.stringify(anchor))}`;
 
-  await t.navigateTo(`http://localhost:5000/?q=${encodedUri}`);
+  const encodedUri = `${encodeURI(JSON.stringify(action))}#${encodeURI(JSON.stringify(anchor))}`;
+  console.log({ url: `http://localhost:9000/?q=${encodedUri}` });
+  await t.navigateTo(`http://localhost:9000/?q=${encodedUri}`);
 
   // 1. show redirect message
   await t.expect(innerText).contains(preText);
@@ -42,12 +43,12 @@ test("should redirect when key is part of action", async t => {
       uri: "https://api-vaccine.storage.staging.notarise.io/document/6cfbbcbf-85a1-4644-b61a-952c12376502",
       key,
       permittedActions: ["VIEW", "STORE"],
-      redirect: "https://www.verify.gov.sg/verify"
+      redirect: "https://www.tradetrust.io/verify"
     }
   };
   const encodedUri = `${encodeURI(JSON.stringify(action))}`;
 
-  await t.navigateTo(`http://localhost:5000/?q=${encodedUri}`);
+  await t.navigateTo(`http://localhost:9000/?q=${encodedUri}`);
 
   // 1. show redirect message
   await t.expect(innerText).contains(preText);
