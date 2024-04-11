@@ -19,10 +19,10 @@ test("should not redirect with invalid provider", async t => {
   const encodedUri = `${encodeURI(JSON.stringify(action))}#${encodeURI(JSON.stringify(anchor))}`;
   const getLocation = ClientFunction(() => window.document.location.href);
 
-  await t.navigateTo(`http://localhost:5000/?q=${encodedUri}`);
+  await t.navigateTo(`http://localhost:9000/?q=${encodedUri}`);
 
   await t.expect(innerText).eql("https://example.com\nis not an authorized platform.");
-  await t.expect(getLocation()).eql(`http://localhost:5000/?q=${encodedUri}`, { timeout: timer * 1000 });
+  await t.expect(getLocation()).eql(`http://localhost:9000/?q=${encodedUri}`, { timeout: timer * 1000 });
 });
 
 test("should not redirect with missing provider", async t => {
@@ -38,8 +38,8 @@ test("should not redirect with missing provider", async t => {
   const encodedUri = `${encodeURI(JSON.stringify(action))}#${encodeURI(JSON.stringify(anchor))}`;
   const getLocation = ClientFunction(() => window.document.location.href);
 
-  await t.navigateTo(`http://localhost:5000/?q=${encodedUri}`);
+  await t.navigateTo(`http://localhost:9000/?q=${encodedUri}`);
 
   await t.expect(innerText).eql("No platform specified");
-  await t.expect(getLocation()).eql(`http://localhost:5000/?q=${encodedUri}`, { timeout: timer * 1000 });
+  await t.expect(getLocation()).eql(`http://localhost:9000/?q=${encodedUri}`, { timeout: timer * 1000 });
 });
