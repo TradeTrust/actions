@@ -87,3 +87,19 @@ Then, from within your project folder:
 npm run build
 surge public my-project.surge.sh
 ```
+
+### With [Netlify](https://www.netlify.com/)
+
+Create a new repository on GitHub and push the code to it. For a step-by-step guide to import source code to GitHub, you may read this [guide](https://docs.github.com/en/migrations/importing-source-code/using-the-command-line-to-import-source-code/adding-locally-hosted-code-to-github).
+
+Once you have your code on GitHub, you may build and deploy the site onto Netlify.
+
+Select "Import an existing project" from "Add new site" and then "Deploy with GitHub".
+
+<img src="public/deploy_with_github.png" width="75%">
+
+On the build page, enter `npm run build` as the "Build command" and `./public` as the "Publish directory" and click on "Deploy Site".
+
+<img src="public/build_settings.png" width="50%">
+
+After deploying the site, you will receive a URL. Keep in mind that accessing the website directly will display an empty page. This behavior is expected as the site is not intended for direct viewing.
