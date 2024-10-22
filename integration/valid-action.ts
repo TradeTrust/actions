@@ -19,8 +19,8 @@ test("should redirect when key is part of anchor", async t => {
   };
 
   const encodedUri = `${encodeURI(JSON.stringify(action))}#${encodeURI(JSON.stringify(anchor))}`;
-  console.log({ url: `http://localhost:9000/?q=${encodedUri}` });
-  await t.navigateTo(`http://localhost:9000/?q=${encodedUri}`);
+  console.log({ url: `http://localhost:4173/?q=${encodedUri}` });
+  await t.navigateTo(`http://localhost:4173/?q=${encodedUri}`);
 
   // 1. show redirect message
   await t.expect(innerText).contains(preText);
@@ -48,7 +48,7 @@ test("should redirect when key is part of action", async t => {
   };
   const encodedUri = `${encodeURI(JSON.stringify(action))}`;
 
-  await t.navigateTo(`http://localhost:9000/?q=${encodedUri}`);
+  await t.navigateTo(`http://localhost:4173/?q=${encodedUri}`);
 
   // 1. show redirect message
   await t.expect(innerText).contains(preText);
