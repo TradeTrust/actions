@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  test:
+    name: Lint & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: Install Packages
+        run: npm ci
+      - name: Check
+        run: npm run check
+      - name: Test
+        if: ${{ !contains(github.event.pull_request.title, '[skip test]') }}
+        run: npm run integration:headless
+      - name: Build
+        run: npm run build # this MUST be run to ensure production site will be built without errors
