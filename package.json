@@ -1,32 +1,29 @@
 {
-  "name": "svelte-app",
-  "version": "1.0.0",
+  "name": "actions",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "integration": "testcafe chrome integration/**/*.ts",
-    "integration:headless": "testcafe chrome:headless integration/**/*.ts --app \"serve ./public --listen 9000 --single\" --app-init-delay 9000",
-    "start": "sirv public --port 9000"
+    "integration:headless": "testcafe chrome:headless integration/**/*.ts --app \"vite preview\" --app-init-delay 9000",
+    "check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.0.0",
-    "@rollup/plugin-node-resolve": "^7.0.0",
-    "prettier": "^1.19.1",
-    "prettier-plugin-svelte": "^0.7.0",
-    "rollup": "^1.20.0",
-    "rollup-plugin-livereload": "^1.0.0",
-    "rollup-plugin-svelte": "^5.0.3",
-    "rollup-plugin-terser": "^5.1.2",
-    "serve": "^12.0.0",
-    "svelte": "^3.0.0",
-    "testcafe": "^1.14.2"
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "@tsconfig/svelte": "^5.0.4",
+    "@types/url-parse": "^1.4.11",
+    "svelte": "^4.2.19",
+    "svelte-check": "^4.0.4",
+    "testcafe": "^3.6.2",
+    "tslib": "^2.7.0",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.8"
   },
   "dependencies": {
-    "query-string": "^6.10.1",
-    "sirv-cli": "^0.4.4",
-    "url-parse": "^1.4.7"
-  },
-  "prettier": {
-    "printWidth": 120
+    "query-string": "^9.1.1",
+    "url-parse": "^1.5.10"
   }
 }
