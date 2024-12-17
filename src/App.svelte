@@ -1,15 +1,15 @@
-<script>
+<script lang="ts">
   import queryString from "query-string";
   import parse from "url-parse";
 
   const query = queryString.parse(location.search);
-  const action = JSON.parse(window.decodeURI(query.q));
+  const action = JSON.parse(window.decodeURI(query.q as string));
   const whitelists = ["tradetrust.io"];
   let valid;
   let timer = 3;
-  let interval;
+  let interval: any;
 
-  const getDomain = hostname => {
+  const getDomain = (hostname: string) => {
     const parts = hostname.split(".").reverse();
     return parts[1] + "." + parts[0];
   };
