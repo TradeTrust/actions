@@ -12,7 +12,7 @@
   const getDomain = (hostname: string) => {
     const parts = hostname.split(".").reverse();
 
-    if (parts[1] === "netlify" && parts[0] === "app") {
+    if (parts[1] === "netlify" && parts[0] === "app" && parts[2].endsWith("tradetrust-website")) {
     return "tradetrust-website" + "." + parts[1] + "." + parts[0];
   }
 
