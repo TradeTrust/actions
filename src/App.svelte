@@ -13,7 +13,7 @@
     const parts = hostname.split(".").reverse();
 
     if (parts[1] === "netlify" && parts[0] === "app") {
-    return parts[2] + "." + parts[1] + "." + parts[0];
+    return "tradetrust-website" + "." + parts[1] + "." + parts[0];
   }
 
     return parts[1] + "." + parts[0];
