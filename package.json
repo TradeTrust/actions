@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "integration": "testcafe chrome integration/**/*.ts",
-    "integration:headless": "testcafe chrome:headless integration/**/*.ts --app \"vite preview\" --app-init-delay 9000",
+    "integration:headless": "testcafe \"chrome:headless --no-sandbox\" integration/**/*.ts --app \"vite preview\" --app-init-delay 9000",
     "check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json"
   },
   "devDependencies": {
