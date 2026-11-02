@@ -1,5 +1,7 @@
-// tradetrust.io and its subdomains, the TradeTrust Netlify site, and its branch deploys (<branch>--tradetrust-website).
-const ALLOWED_HOST = /^(?:(?:[a-z0-9-]+\.)*tradetrust\.io|(?:[a-z0-9-]+--)?tradetrust-website\.netlify\.app)$/;
+// tradetrust.io and its subdomains, plus the Netlify hosts for ref, dev, and gallery
+// and their branch deploys (<branch>--<site>.netlify.app).
+const ALLOWED_HOST =
+  /^(?:(?:[a-z0-9-]+\.)*tradetrust\.io|(?:[a-z0-9-]+--)?(?:reference-implementation|tradetrust-dev|tradetrust-gallery)\.netlify\.app)$/;
 
 export const isAllowedRedirect = (redirect: unknown): boolean => {
   if (typeof redirect !== "string") return false;
