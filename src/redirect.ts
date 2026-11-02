@@ -5,6 +5,8 @@ const ALLOWED_HOST =
 
 export const isAllowedRedirect = (redirect: unknown): boolean => {
   if (typeof redirect !== "string") return false;
+  // App.svelte appends its own query and fragment, so the redirect must contain neither.
+  if (/[?#]/.test(redirect)) return false;
   let url: URL;
   try {
     url = new URL(redirect);
