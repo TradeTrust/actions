@@ -1,26 +1,14 @@
 <script lang="ts">
   import queryString from "query-string";
-  import parse from "url-parse";
+  import { isAllowedRedirect } from "./redirect";
 
   const query = queryString.parse(location.search);
   const action = JSON.parse(window.decodeURI(query.q as string));
-  const whitelists = ["tradetrust.io","tradetrust-website.netlify.app"];
   let valid;
   let timer = 3;
   let interval: any;
 
-  const getDomain = (hostname: string) => {
-    const parts = hostname.split(".").reverse();
-
-    if (parts[1] === "netlify" && parts[0] === "app" && parts[2].endsWith("tradetrust-website")) {
-    return "tradetrust-website" + "." + parts[1] + "." + parts[0];
-  }
-
-    return parts[1] + "." + parts[0];
-  };
-
-  // use parse to ignore protocols, path, etc...
-  $: valid = action.payload.redirect && whitelists.includes(getDomain(parse(action.payload.redirect).hostname));
+  $: valid = isAllowedRedirect(action.payload.redirect);
 
   $: if (valid && !interval) {
     interval = setInterval(() => {
